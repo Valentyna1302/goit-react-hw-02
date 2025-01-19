@@ -1,9 +1,21 @@
-const Options = ({ feedback, updateFeedback }) => {
+const Options = ({
+  feedback,
+  updateFeedback,
+  handleResetClick,
+  totalFeedback,
+}) => {
+  const btnOptions = Object.keys(feedback);
+
   return (
     <div>
-      <button onClick={() => updateFeedback("good")}>Good</button>
-      <button onClick={() => updateFeedback("neutral")}>Neutral</button>
-      <button onClick={() => updateFeedback("bad")}>Bad</button>
+      {btnOptions.map((option) => (
+        <button key={option} onClick={() => updateFeedback(option)}>
+          {option.charAt(0).toUpperCase() + option.slice(1)}
+        </button>
+      ))}
+      {totalFeedback > 0 && (
+        <button onClick={() => handleResetClick()}>Reset</button>
+      )}
     </div>
   );
 };

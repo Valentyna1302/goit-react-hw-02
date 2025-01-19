@@ -2,9 +2,11 @@ const Feedback = ({ feedback }) => {
   return (
     <div>
       <ul>
-        <li>Good: {feedback.good}</li>
-        <li>Neutral: {feedback.neutral}</li>
-        <li>Bad: {feedback.bad}</li>
+        {Object.entries(feedback).map(([key, value]) => (
+          <li key={key}>
+            {key.charAt(0).toUpperCase() + key.slice(1)}: {value}
+          </li>
+        ))}
       </ul>
     </div>
   );

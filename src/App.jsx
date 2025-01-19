@@ -18,12 +18,25 @@ function App() {
     }));
   };
 
+  const handleResetClick = () => {
+    setFeedback({
+      good: 0,
+      neutral: 0,
+      bad: 0,
+    });
+  };
+
   const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
 
   return (
     <div>
       <Description />
-      <Options feedback={feedback} updateFeedback={updateFeedback} />
+      <Options
+        feedback={feedback}
+        updateFeedback={updateFeedback}
+        handleResetClick={handleResetClick}
+        totalFeedback={totalFeedback}
+      />
       {totalFeedback > 0 ? <Feedback feedback={feedback} /> : <Notification />}
     </div>
   );
